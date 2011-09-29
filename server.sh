@@ -1,4 +1,7 @@
 #!/bin/bash
+echo "Complete nginx settings"
+exit
+
 cd $(dirname $0)
 
 function install_basic {
