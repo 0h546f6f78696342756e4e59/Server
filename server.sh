@@ -1,6 +1,4 @@
 #!/bin/bash
-echo "Complete nginx settings"
-exit
 
 cd $(dirname $0)
 
@@ -35,9 +33,14 @@ function install_mysql {
 
 function install_nginx {
 	apt-get install nginx
-	rm /etc/nginx/conf.d/* /etc/nginx/sites-available/* /etc/nginx/sites-enabled/*
+	rm -r /etc/nginx/sites-*
+	rm /etc/nginx/conf.d/*
 	cp -R settings/nginx /etc/
-	ln -s /etc/nginx/sites-available/main /etc/nginx/sites-enabled/
+	mkdir /srv
+	mkdir /srv/default
+	mkdir /srv/default/logs
+	mkdir /srv/default/www
+	echo 'Hello world!' > /srv/default/www/index.html
 	invoke-rc.d nginx restart
 }
 
