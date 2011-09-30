@@ -35,7 +35,7 @@ function install_nginx {
 	apt-get install nginx
 	rm -r /etc/nginx/sites-* /etc/nginx/conf.d/*
 	cp -R settings/nginx /etc/
-	mkdir /srv /srv/default /srv/default/logs /srv/default/www
+	mkdir -p /srv/default/logs /srv/default/www
 	echo "Hello world! (`date`)" > /srv/default/www/index.html
 	invoke-rc.d nginx restart
 }
