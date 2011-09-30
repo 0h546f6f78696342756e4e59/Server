@@ -33,14 +33,10 @@ function install_mysql {
 
 function install_nginx {
 	apt-get install nginx
-	rm -r /etc/nginx/sites-*
-	rm /etc/nginx/conf.d/*
+	rm -r /etc/nginx/sites-* /etc/nginx/conf.d/*
 	cp -R settings/nginx /etc/
-	mkdir /srv
-	mkdir /srv/default
-	mkdir /srv/default/logs
-	mkdir /srv/default/www
-	echo 'Hello world!' > /srv/default/www/index.html
+	mkdir /srv /srv/default /srv/default/logs /srv/default/www
+	echo "Hello world! (`date`)" > /srv/default/www/index.html
 	invoke-rc.d nginx restart
 }
 
